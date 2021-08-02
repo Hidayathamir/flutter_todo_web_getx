@@ -1,26 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo_getx/views/home_page.dart';
+import 'package:get/get.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+void main() => runApp(GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text('Hello World'),
-      ),
-    );
-  }
-}
+      home: HomePage(),
+    ));
