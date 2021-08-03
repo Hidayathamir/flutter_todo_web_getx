@@ -1,3 +1,3 @@
 class Todo {
-  // not yet
+  // there is no model in this project, just dummy data in controllers
 }

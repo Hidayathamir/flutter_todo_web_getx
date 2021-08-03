@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_todo_getx/controllers/todos_controllers.dart';
 import 'package:get/get.dart';
 
-Widget todosListView() {
+Obx todosListView() {
   final TodosController todosController = Get.find();
-
-  return Expanded(
-    child: ListView.builder(
+  return Obx(() {
+    return ListView.builder(
       itemCount: todosController.todos.length,
-      itemBuilder: (context, index) {
-        return Row(
-          children: [
-            IconButton(
+      itemBuilder: (BuildContext context, int index) {
+        return Card(
+          child: ListTile(
+            leading: IconButton(
               icon: Obx(() {
                 return Icon(
                   Icons.check_circle,
@@ -22,14 +21,14 @@ Widget todosListView() {
               }),
               onPressed: () => todosController.changeStatusTodo(index),
             ),
-            Text(todosController.todos[index]['todo']),
-            IconButton(
+            title: Text(todosController.todos[index]['todo']),
+            trailing: IconButton(
+              icon: Icon(Icons.delete_forever, color: Colors.red),
               onPressed: () => todosController.removeTodo(index),
-              icon: Icon(Icons.delete_forever),
             ),
-          ],
+          ),
         );
       },
-    ),
-  );
+    );
+  });
 }
